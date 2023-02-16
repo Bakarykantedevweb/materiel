@@ -1,3 +1,4 @@
+{{-- Add Bon --}}
 <div wire:ignore.self class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -72,6 +73,30 @@
                     <button type="submit" class="btn btn-primary">Enregister</button>
                 </div>
             </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{{-- Details Bon --}}
+<div class="modal fade" id="modal-xl">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Details Bordereau de Livraison</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1 class="text-center">Bordereau de livraison</h1>
+                
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Imprimer</button>
+            </div>
         </div>
         <!-- /.modal-content -->
     </div>

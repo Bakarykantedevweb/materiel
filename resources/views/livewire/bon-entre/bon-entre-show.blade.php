@@ -49,6 +49,7 @@
                                             <td class="text-center">{{ $bonentre->description }}</td>
                                             <td class="text-center">{{ $bonentre->date_entre }}</td>
                                             <td class="text-center"><button type="button"
+                                                data-toggle="modal" data-target="#modal-xl"
                                                  class="btn btn-info"><i class="fa fa-info"></i></button>
                                             </td>
                                              <td class="text-center"><button type="button"
