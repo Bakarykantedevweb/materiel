@@ -11,5 +11,5 @@ class Fournisseur extends Model
 
     protected $table = 'fournisseurs';
 
-    protected $fillable = ['nom'];
+    protected $fillable = ['nom','status'];
 }

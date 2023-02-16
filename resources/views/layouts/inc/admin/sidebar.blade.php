@@ -35,18 +35,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('materiels-recuperes') }}" class="nav-link">
-                        <i class="fa fa-table nav-icon"></i>
-                        <p>Recuperés</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('materiels-sortis') }}" class="nav-link">
-                        <i class="fas fa-sign-in-alt nav-icon"></i>
-                        <p>Sortis</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ url('/agences') }}" class="nav-link">
                         <i class="fa fa-building nav-icon"></i>
                         <p>Agences</p>

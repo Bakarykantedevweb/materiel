@@ -89,7 +89,7 @@ class BonEntreShow extends Component
     public function render()
     {
         $this->materiels = Materiel::all();
-        $this->fournisseurs = Fournisseur::all();
+        $this->fournisseurs = Fournisseur::where('status','1')->get();
         $bonentres = BonEntre::all();
         return view('livewire.bon-entre.bon-entre-show',compact('bonentres'));
     }

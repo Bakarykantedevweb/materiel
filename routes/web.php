@@ -37,10 +37,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/agences',[AgenceController::class, 'index']);
     Route::get('/fournisseurs',[FournisseurController::class, 'index']);
     Route::get('/departements',[DepartementController::class, 'index']);
-    Route::get('/materiels-recuperes',[MaterielRecupereController::class, 'index']);
-    Route::get('/materiels-sortis',[MaterielSortiController::class, 'index']);
-    Route::get('/materiels-sortis/create',[MaterielSortiController::class, 'create']);
-    Route::post('/materiels-sortis/create',[MaterielSortiController::class, 'store']);
-    Route::get('/materiels-sortis/{id}/edit',[MaterielSortiController::class, 'edit']);
-    Route::post('/materiels-sortis/{id}/edit',[MaterielSortiController::class, 'update']);
 });

@@ -17,9 +17,21 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="">Status</label>
+                        <select wire:model="status" class="form-control">
+                            <option value=""></option>
+                            <option value="1">Activer</option>
+                            <option value="0">Desactiver</option>
+                        </select>
+                        @error('status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" wire:click="closeModal" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button type="button" wire:click="closeModal" class="btn btn-default"
+                        data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Enregister</button>
                 </div>
             </form>
@@ -50,9 +62,21 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="">Status</label>
+                        <select wire:model="status" class="form-control">
+                            <option value=""></option>
+                            <option value="1">Activer</option>
+                            <option value="0">Desactiver</option>
+                        </select>
+                        @error('status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" wire:click="closeModal" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button type="button" wire:click="closeModal" class="btn btn-default"
+                        data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Mettre a jour</button>
                 </div>
             </form>
@@ -78,7 +102,8 @@
                     <p>Etes-vous de vouloir supprimer ce Fournisseur</p>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" wire:click="closeModal" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button type="button" wire:click="closeModal" class="btn btn-default"
+                        data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </div>
             </form>

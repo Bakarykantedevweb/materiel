@@ -7,12 +7,13 @@ use App\Models\Fournisseur;
 
 class FourisseurShow extends Component
 {
-    public $nom, $fournisseur_id;
+    public $nom, $status, $fournisseur_id;
 
     protected function rules()
     {
         return [
             'nom' => 'required|string|',
+            'status' => 'required|string|',
         ];
     }
 
@@ -39,6 +40,7 @@ class FourisseurShow extends Component
         {
             $this->fournisseur_id = $fournisseur_id;
             $this->nom = $Fournisseur->nom;
+            $this->status = $Fournisseur->status;
         }
         else
         {
@@ -51,6 +53,7 @@ class FourisseurShow extends Component
         $validatedData = $this->validate();
         Fournisseur::where('id',$this->fournisseur_id)->update([
             'nom' => $validatedData['nom'],
+            'status' => $validatedData['status'],
         ]);
         session()->flash('success', 'Fournisseur Updated Successfull');
         $this->resetInput();
@@ -64,7 +67,9 @@ class FourisseurShow extends Component
 
     public function destroyFournisseur()
     {
-        Fournisseur::find($this->fournisseur_id)->delete();
+        Fournisseur::find($this->fournisseur_id)->update([
+            'status' => 0
+        ]);
         session()->flash('success', 'Fournisseur Deleted Successfull');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
