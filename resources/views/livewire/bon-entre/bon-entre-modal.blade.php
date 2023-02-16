@@ -90,7 +90,46 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1 class="text-center">Bordereau de livraison</h1>
+                <h2 class="text-center">Bordereau de livraison</h2>
+                <div class="row p-1">
+                    <div class="col-xl-6">
+                            <div class="col-md-11 border border-2 rounded p-2">
+                                <span>Numéro</span>
+                            </div><br>
+                            <div class="col-md-11 border border-2 rounded p-2">
+                                <span>Date</span>
+                            </div><br>
+                            <div class="col-md-11 border border-2 rounded p-2">
+                                <span>Reference</span>
+                            </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <textarea readonly name="" id="" cols="20" rows="7" class="form-control">
+                            Sommething here....
+                        </textarea>
+                    </div>
+                </div>
+                <hr>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Code</td>
+                            <td>Description</td>
+                            <td>Quantite</td>
+                            <td>Unité</td>
+                            <td>Observation</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Code</td>
+                            <td>Description</td>
+                            <td>Quantite</td>
+                            <td>Unité</td>
+                            <td>Observation</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
             </div>
             <div class="modal-footer justify-content-between">
