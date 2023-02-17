@@ -14,7 +14,7 @@ class MaterielShow extends Component
     protected $paginationTheme = 'bootstrap';
 
 
-    public  $marque, $model, $etat, $serie, $date_entre, $description, $type, $materiel_id;
+    public  $marque, $model, $etat, $serie, $date_entre, $description, $type, $code, $materiel_id;
 
     public $datemois = '';
     public $dateannee = '';
@@ -29,6 +29,7 @@ class MaterielShow extends Component
             'type' => 'required|string|',
             'etat' => 'required|string|',
             'description' => 'required|string|',
+            'code' => 'required|string|',
         ];
     }
 
@@ -48,6 +49,7 @@ class MaterielShow extends Component
         $materiel->etat = $validatedData['etat'];
         $materiel->date_entre = $validatedData['date_entre'];
         $materiel->description = $validatedData['description'];
+        $materiel->code = $validatedData['code'];
         $materiel->save();
         session()->flash('success', 'Materiel Added Successfull');
         $this->resetInput();
@@ -115,6 +117,7 @@ class MaterielShow extends Component
         $this->type = '';
         $this->etat = '';
         $this->description = '';
+        $this->code = '';
     }
 
     public function render()

@@ -40,6 +40,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th class="text-center">Code</th>
                                         <th class="text-center">Marque</th>
                                         <th class="text-center">Model</th>
                                         <th class="text-center">Serie</th>
@@ -54,6 +55,7 @@
                                     @forelse ($materiels as $materiel)
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
+                                            <td class="text-center">{{ $materiel->code }}</td>
                                             <td class="text-center">{{ $materiel->marque }}</td>
                                             <td class="text-center">{{ $materiel->model }}</td>
                                             <td class="text-center">{{ $materiel->serie }}</td>

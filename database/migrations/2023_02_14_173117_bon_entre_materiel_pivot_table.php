@@ -13,7 +13,7 @@ class MaterielsBonEntresPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiels_bon_entres', function (Blueprint $table) {
+        Schema::create('bon_entre_materiel', function (Blueprint $table) {
             $table->foreignId('materiel_id')->constrained();
             $table->foreignId('bon_entre_id')->constrained();
             $table->integer('quantite');

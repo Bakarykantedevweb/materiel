@@ -50,6 +50,7 @@
                                             <td class="text-center">{{ $bonentre->date_entre }}</td>
                                             <td class="text-center"><button type="button"
                                                 data-toggle="modal" data-target="#modal-xl"
+                                                wire:click="detailBon({{ $bonentre->id }})"
                                                  class="btn btn-info"><i class="fa fa-info"></i></button>
                                             </td>
                                              <td class="text-center"><button type="button"

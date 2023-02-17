@@ -80,64 +80,75 @@
 </div>
 
 {{-- Details Bon --}}
-<div class="modal fade" id="modal-xl">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Details Bordereau de Livraison</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="text-center">Bordereau de livraison</h2>
-                <div class="row p-1">
-                    <div class="col-xl-6">
+@if ($this->bonDetail != '')
+    <div wire:ignore.self class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Details Bordereau de Reception</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="text-center">Bordereau de reception</h2>
+                    <div class="row p-1">
+                        <div class="col-xl-6">
                             <div class="col-md-11 border border-2 rounded p-2">
-                                <span>Numéro</span>
+                                <span>Numéro : {{ $bonDetail->numero }}</span>
                             </div><br>
                             <div class="col-md-11 border border-2 rounded p-2">
-                                <span>Date</span>
+                                <span>Date: {{ $bonDetail->date_entre }}</span>
                             </div><br>
                             <div class="col-md-11 border border-2 rounded p-2">
                                 <span>Reference</span>
                             </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <textarea readonly name="" id="" cols="20" rows="7" class="form-control">
-                            Sommething here....
+                        </div>
+                        <div class="col-xl-6">
+                            <textarea readonly name="" id="" cols="20" rows="7" class="form-control">
+                            {{ $bonDetail->fournisseur->nom }}
                         </textarea>
+                        </div>
                     </div>
+                    <br>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <td>Code</td>
+                                <td>Description</td>
+                                <td>Quantite</td>
+                                <td>Unité</td>
+                                <td>Observation</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($detailBonMateriels as $detailBonMateriel)
+                                <tr>
+                                    <td>{{ $detailBonMateriel->code }}</td>
+                                    <td>
+                                        {{ $detailBonMateriel->type->libelle.' '.$detailBonMateriel->marque.' '.$detailBonMateriel->model.' '.$detailBonMateriel->description }}
+                                    </td>
+                                    @php
+                                      $pivot =  DB::table("bon_entre_materiel")->where("bon_entre_id",$bonDetail->id)
+                                          ->where("materiel_id",$detailBonMateriel->id)->first();
+                                    @endphp
+
+                                    <td>{{ $pivot->quantite }}</td>
+                                    <td>Unité</td>
+                                    <td></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
-                <hr>
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <td>Code</td>
-                            <td>Description</td>
-                            <td>Quantite</td>
-                            <td>Unité</td>
-                            <td>Observation</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Code</td>
-                            <td>Description</td>
-                            <td>Quantite</td>
-                            <td>Unité</td>
-                            <td>Observation</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Imprimer</button>
+                </div>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Imprimer</button>
-            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
+@endif

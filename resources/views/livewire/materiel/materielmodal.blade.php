@@ -50,6 +50,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label for="">Code</label>
+                                <input type="text" class="form-control" wire:model="code">
+                                @error('code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="">Date Entré</label>
                                 <input type="date" class="form-control" wire:model="date_entre">
                                 @error('date_entre')

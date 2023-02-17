@@ -17,9 +17,12 @@ class BonEntreShow extends Component
     public $description;
     public $date;
     public $fournisseur;
+    public $detailBonMateriels;
+    public $bonDetail;
 
     public $materiel_id =  [];
     public $quantite =  [];
+    public $bon_id;
 
     public function addInput()
     {
@@ -58,6 +61,10 @@ class BonEntreShow extends Component
         $bon->fournisseur_id = $validatedData['fournisseur'];
         $bon->save();
 
+        $numero = 'BR'.str_pad($bon->id,3 ,'0',STR_PAD_LEFT);
+        $bon->numero = $numero;
+        $bon->save();
+
         if($bon)
         {
             for($i = 0; $i < count($this->materiel_id); $i++)
@@ -72,6 +79,15 @@ class BonEntreShow extends Component
         session()->flash('success', 'Agence Added Successfull');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
+    }
+
+    public function detailBon($bon_id)
+    {
+        $this->bonDetail=BonEntre::find($bon_id);
+        if($this->bonDetail != "")
+        {
+            $this->detailBonMateriels = $this->bonDetail->materiels;
+        }
     }
 
      public function closeModal()
