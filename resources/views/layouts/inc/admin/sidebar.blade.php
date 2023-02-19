@@ -31,7 +31,13 @@
                 <li class="nav-item">
                     <a href="{{ url('/bonEntre') }}" class="nav-link">
                         <i class="fa fa-desktop nav-icon"></i>
-                        <p>Bon Entre</p>
+                        <p>Bon reception</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/bonLivraison') }}" class="nav-link">
+                        <i class="fa fa-desktop nav-icon"></i>
+                        <p>Bon livraison</p>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\MaterielController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartementController;
 use App\Http\Controllers\Admin\FournisseurController;
+use App\Http\Controllers\Admin\BonLivraisonController;
 use App\Http\Controllers\Admin\MaterielSortiController;
 use App\Http\Controllers\Admin\MaterielRecupereController;
 
@@ -34,6 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
     Route::get('/materiels',[MaterielController::class, 'index']);
     Route::get('/bonEntre',[BonEntreController::class, 'index']);
+    Route::get('/bonLivraison',[BonLivraisonController::class, 'index']);
     Route::get('/agences',[AgenceController::class, 'index']);
     Route::get('/fournisseurs',[FournisseurController::class, 'index']);
     Route::get('/departements',[DepartementController::class, 'index']);

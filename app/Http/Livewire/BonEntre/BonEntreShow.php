@@ -35,7 +35,7 @@ class BonEntreShow extends Component
         unset($this->materiels[$champ]);
     }
 
-     protected function rules()
+    protected function rules()
     {
         return [
             'description' => 'required|string|',
@@ -53,7 +53,6 @@ class BonEntreShow extends Component
 
     public function saveBon()
     {
-       
         $validatedData = $this->validate();
         $bon = new BonEntre;
         $bon->description = $validatedData['description'];
