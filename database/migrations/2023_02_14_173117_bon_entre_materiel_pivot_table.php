@@ -28,6 +28,6 @@ class MaterielsBonEntresPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materiels_bon_entres');
+        Schema::dropIfExists('bon_entre_materiel');
     }
 }
