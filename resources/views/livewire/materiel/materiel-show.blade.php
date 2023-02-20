@@ -12,15 +12,7 @@
                 </div>
             @endif
         </div>
-        <div class="container ml-1">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Selectionnez le mois</label>
-                    <input type="month" wire:model="datemois" class="form-control">
-                </div>
-            </div>
-        </div>
-        <br>
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -46,7 +38,7 @@
                                         <th class="text-center">Serie</th>
                                         <th class="text-center">Type</th>
                                         <th class="text-center">Date Entrer</th>
-                                        <th class="text-center">Delete</th>
+                                        <th class="text-center">Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,10 +52,10 @@
                                             <td class="text-center">{{ $materiel->serie }}</td>
                                             <td class="text-center">{{ $materiel->type->libelle }}</td>
                                             <td class="text-center">{{ $materiel->date_entre }}</td>
-                                            <td class="text-center"><button class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#deleteMaterielmodal"
-                                                    wire:click="deleteMateriel({{ $materiel->id }})"><i
-                                                        class="fa fa-trash"></i></button></td>
+                                            <td class="text-center"><button class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#editMaterielmodal"
+                                                    wire:click="editMateriel({{ $materiel->id }})"><i
+                                                        class="fa fa-edit"></i></button></td>
                                         </tr>
                                     @empty
                                         <tr>

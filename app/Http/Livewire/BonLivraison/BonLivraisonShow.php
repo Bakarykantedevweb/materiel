@@ -5,6 +5,7 @@ namespace App\Http\Livewire\BonLivraison;
 use App\Models\Agence;
 use Livewire\Component;
 use App\Models\BonSorti;
+use App\Models\Departement;
 use App\Models\Materiel;
 use App\Models\Fournisseur;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class BonLivraisonShow extends Component
 {
     public $agences, $champs, $key, $materiel_id, $quantite, $departements, $nom, $prenom, $agence, $departement, $date_sorti, $materiels,
-            $bonsorti_id;
+            $bonsorti_id, $mois;
 
     public function addInput()
     {
@@ -40,14 +41,12 @@ class BonLivraisonShow extends Component
     public function saveBonLivraison()
     {
         $validatedData = $this->validate();
-        $encrypt = uniqid('bonSorti');
         $bonLivraison = new BonSorti;
         $bonLivraison->agence_id = $validatedData['agence'];
         $bonLivraison->departement_id = $validatedData['departement'];
         $bonLivraison->nom = $validatedData['nom'];
         $bonLivraison->prenom = $validatedData['prenom'];
         $bonLivraison->date_sorti = $validatedData['date_sorti'];
-        $bonLivraison->encrypt = $encrypt;
         $bonLivraison->save();
 
         if($bonLivraison)
@@ -60,6 +59,8 @@ class BonLivraisonShow extends Component
                     'quantite' => $this->quantite[$i]
                 ]);
             }
+
+ 
         }
 
         session()->flash('success', 'Bon de Livraison Added Successfull');
@@ -91,9 +92,9 @@ class BonLivraisonShow extends Component
     public function render()
     {
         $this->agences = Agence::all();
-        $this->departements = Fournisseur::all();
+        $this->departements = Departement::all();
         $this->materiels = Materiel::all();
-        $bonSortis = BonSorti::all();
+        $bonSortis = BonSorti::whereDate('date_sorti', 'like', '%'.$this->mois.'%')->get();
         return view('livewire.bon-livraison.bon-livraison-show',compact('bonSortis'));
     }
 }

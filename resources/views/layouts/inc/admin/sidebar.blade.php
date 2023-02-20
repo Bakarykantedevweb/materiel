@@ -30,14 +30,20 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/bonEntre') }}" class="nav-link">
-                        <i class="fa fa-desktop nav-icon"></i>
+                        <i class="fa fa-door-open nav-icon"></i>
                         <p>Bon reception</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/bonLivraison') }}" class="nav-link">
-                        <i class="fa fa-desktop nav-icon"></i>
+                        <i class="fa fa-door-closed nav-icon"></i>
                         <p>Bon livraison</p>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a href="{{ url('/materiels-recuperes') }}" class="nav-link">
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <p>Materiels Recuperés</p>
                     </a>
                 </li>
                 <li class="nav-item">

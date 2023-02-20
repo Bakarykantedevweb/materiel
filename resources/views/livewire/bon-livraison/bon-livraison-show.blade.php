@@ -12,7 +12,19 @@
                 </div>
             @endif
         </div>
-
+        <div class="container ml-1">
+            <div class="row">
+                <div class="container ml-1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Selectionnez le mois</label>
+                            <input type="month" wire:model="mois" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

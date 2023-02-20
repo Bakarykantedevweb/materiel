@@ -31,13 +31,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Serie</label>
-                                <input type="text" class="form-control" wire:model="serie">
-                                @error('serie')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="">Etat</label>
                                 <select class="form-control" id="change" wire:model="etat">
                                     <option value=""></option>
@@ -70,13 +63,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Quantite</label>
-                                <input type="number" class="form-control" wire:model="quantite">
-                                @error('quantite')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="">Date Entré</label>
                                 <input type="date" class="form-control" wire:model="date_entre">
                                 @error('date_entre')
@@ -89,15 +75,9 @@
                                 <label for="">Type Materiel</label>
                                 <select class="form-control" wire:model="type">
                                     <option value=""></option>
-                                    <option value="Ordinateur Portable">Ordinateur Portable</option>
-                                    <option value="Ordinateur de Bureau">Ordinateur de Bureau</option>
-                                    <option value="Ecran">Ecran</option>
-                                    <option value="Unite Centrale">Unite Centrale</option>
-                                    <option value="Clavier">Clavier</option>
-                                    <option value="Souris">Souris</option>
-                                    <option value="Imprimante">Imprimante</option>
-                                    <option value="Scanner">Scanner</option>
-                                    <option value="Disk">Disk</option>
+                                    @foreach ($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->libelle }}</option>
+                                    @endforeach
                                 </select>
                                 @error('type')
                                     <span class="text-danger">{{ $message }}</span>
@@ -107,7 +87,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Description de l'etat du Maeriel Recupere</label>
-                                <textarea wire:model="description" class="form-control" rows="5"></textarea>
+                                <textarea wire:model="description" class="form-control" rows="2"></textarea>
                                 @error('description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -116,7 +96,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" wire:click="closeModal" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger" wire:click="closeModal"
+                        data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
             </form>
@@ -161,13 +142,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Serie</label>
-                                <input type="text" class="form-control" wire:model="serie">
-                                @error('serie')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="">Etat</label>
                                 <select class="form-control" id="change" wire:model="etat">
                                     <option value=""></option>
@@ -200,13 +174,6 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Quantite</label>
-                                <input type="number" class="form-control" wire:model="quantite">
-                                @error('quantite')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="">Date Entré</label>
                                 <input type="date" class="form-control" wire:model="date_entre">
                                 @error('date_entre')
@@ -219,15 +186,9 @@
                                 <label for="">Type Materiel</label>
                                 <select class="form-control" wire:model="type">
                                     <option value=""></option>
-                                    <option value="Ordinateur Portable">Ordinateur Portable</option>
-                                    <option value="Ordinateur de Bureau">Ordinateur de Bureau</option>
-                                    <option value="Ecran">Ecran</option>
-                                    <option value="Unite Centrale">Unite Centrale</option>
-                                    <option value="Clavier">Clavier</option>
-                                    <option value="Souris">Souris</option>
-                                    <option value="Imprimante">Imprimante</option>
-                                    <option value="Scanner">Scanner</option>
-                                    <option value="Disk">Disk</option>
+                                    @foreach ($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->libelle }}</option>
+                                    @endforeach
                                 </select>
                                 @error('type')
                                     <span class="text-danger">{{ $message }}</span>
@@ -237,7 +198,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Description de l'etat du Maeriel Recupere</label>
-                                <textarea wire:model="description" class="form-control" rows="5"></textarea>
+                                <textarea wire:model="description" class="form-control" rows="2"></textarea>
                                 @error('description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -246,8 +207,9 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" wire:click="closeModal" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary">Mettre a jour</button>
+                    <button type="button" class="btn btn-danger" wire:click="closeModal"
+                        data-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -263,7 +225,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Formulaire de Suppression d'un Materiel Recupere</h4>
-                <button type="button" class="close" wire:click="closeModal" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" wire:click="closeModal" data-dismiss="modal"
+                    aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -272,7 +235,8 @@
                     <h4 class="text-center">Etes vous sur je vouloir supprimer ce Materiel Recupere</h4>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" wire:click="closeModal" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-default" wire:click="closeModal"
+                        data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </div>
             </form>
@@ -281,4 +245,3 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-

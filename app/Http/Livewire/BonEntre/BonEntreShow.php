@@ -18,7 +18,7 @@ class BonEntreShow extends Component
     public $date;
     public $fournisseur;
     public $detailBonMateriels;
-    public $bonDetail;
+    public $bonDetail, $mois;
 
     public $materiel_id =  [];
     public $quantite =  [];
@@ -105,7 +105,7 @@ class BonEntreShow extends Component
     {
         $this->materiels = Materiel::all();
         $this->fournisseurs = Fournisseur::where('status','1')->get();
-        $bonentres = BonEntre::all();
+        $bonentres = BonEntre::whereDate('date_entre', 'like', '%'.$this->mois.'%')->get();
         return view('livewire.bon-entre.bon-entre-show',compact('bonentres'));
     }
 }

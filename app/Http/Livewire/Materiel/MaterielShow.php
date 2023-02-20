@@ -27,7 +27,7 @@ class MaterielShow extends Component
             'serie' => 'required|string|min:6',
             'date_entre' => 'required|string|',
             'type' => 'required|string|',
-            'etat' => 'required|string|',
+            'etat' => 'required|',
             'description' => 'required|string|',
             'code' => 'required|string|',
         ];
@@ -65,8 +65,12 @@ class MaterielShow extends Component
             $this->marque = $materiel->marque;
             $this->model = $materiel->model;
             $this->serie = $materiel->serie;
-            $this->type = $materiel->type;
+            $this->type = $materiel->type_id;
             $this->date_entre = $materiel->date_entre;
+            $this->code = $materiel->code;
+            $this->date_entre = $materiel->date_entre;
+            $this->etat = $materiel->etat_id;
+            $this->description = $materiel->description;
         }
         else
         {
@@ -77,28 +81,18 @@ class MaterielShow extends Component
     public function updateMateriel()
     {
         $validatedData = $this->validate();
-        Materiel::where('id',$this->materiel_id)->update([
-            'marque' => $validatedData['marque'],
-            'model' => $validatedData['model'],
-            'serie' => $validatedData['serie'],
-            'type' => $validatedData['type'],
-            'quantite' => $validatedData['quantite'],
-            'date_entre' => $validatedData['date_entre'],
-        ]);
+        $materiel = Materiel::find($this->materiel_id);
+        $materiel->marque = $validatedData['marque'];
+        $materiel->model = $validatedData['model'];
+        $materiel->serie = $validatedData['serie'];
+        $materiel->type_id = $validatedData['type'];
+        $materiel->etat_id = $validatedData['etat'];
+        $materiel->date_entre = $validatedData['date_entre'];
+        $materiel->description = $validatedData['description'];
+        $materiel->code = $validatedData['code'];
+        $materiel->update();
+
         session()->flash('success', 'Materiel Updated Successfull');
-        $this->resetInput();
-        $this->dispatchBrowserEvent('close-modal');
-    }
-
-    public function deleteMateriel(int $materiel_id)
-    {
-        $this->materiel_id = $materiel_id;
-    }
-
-    public function destroyMateriel()
-    {
-        Materiel::find($this->materiel_id)->delete();
-        session()->flash('success', 'Materiel Deleted Successfull');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
     }

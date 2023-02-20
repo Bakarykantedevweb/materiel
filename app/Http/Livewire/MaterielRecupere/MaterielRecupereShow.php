@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\MaterielRecupere;
 
+use App\Models\Type;
 use App\Models\Agence;
 use Livewire\Component;
 use App\Models\Departement;
@@ -9,7 +10,7 @@ use App\Models\MaterielRecupere;
 
 class MaterielRecupereShow extends Component
 {
-    public $departement, $agence, $etat, $description, $marque, $model, $serie, $quantite, $date_entre, $type,
+    public $departement, $agence, $etat, $description, $marque, $model, $date_entre, $type,
     $materielRecupere_id;
 
     public $mois = '';
@@ -22,10 +23,8 @@ class MaterielRecupereShow extends Component
             'marque' => 'required|string|',
             'model' => 'required|string|',
             'etat' => 'required|string|',
-            'serie' => 'required|string|min:6',
-            'quantite' => 'required|string|',
             'date_entre' => 'required|string|',
-            'type' => 'required|string|',
+            'type' => 'required',
             'description' => 'required|string|',
         ];
     }
@@ -42,11 +41,9 @@ class MaterielRecupereShow extends Component
         $materielRecupere->departement_id = $validatedData['departement'];
         $materielRecupere->agence_id = $validatedData['agence'];
         $materielRecupere->marque = $validatedData['marque'];
-        $materielRecupere->model = $validatedData['model'];
-        $materielRecupere->serie = $validatedData['serie'];
+        $materielRecupere->modele = $validatedData['model'];
         $materielRecupere->etat = $validatedData['etat'];
-        $materielRecupere->type = $validatedData['type'];
-        $materielRecupere->quantite = $validatedData['quantite'];
+        $materielRecupere->type_id = $validatedData['type'];
         $materielRecupere->description = $validatedData['description'];
         $materielRecupere->date_entre = $validatedData['date_entre'];
         $materielRecupere->save();
@@ -64,11 +61,9 @@ class MaterielRecupereShow extends Component
             $this->departement = $materielRecupere->departement_id;
             $this->agence = $materielRecupere->agence_id;
             $this->marque = $materielRecupere->marque;
-            $this->model = $materielRecupere->model;
-            $this->serie = $materielRecupere->serie;
-            $this->type = $materielRecupere->type;
+            $this->model = $materielRecupere->modele;
+            $this->type = $materielRecupere->type_id;
             $this->etat = $materielRecupere->etat;
-            $this->quantite = $materielRecupere->quantite;
             $this->date_entre = $materielRecupere->date_entre;
             $this->description = $materielRecupere->description;
         }
@@ -85,11 +80,9 @@ class MaterielRecupereShow extends Component
         $materielRecupere->departement_id = $validatedData['departement'];
         $materielRecupere->agence_id = $validatedData['agence'];
         $materielRecupere->marque = $validatedData['marque'];
-        $materielRecupere->model = $validatedData['model'];
-        $materielRecupere->serie = $validatedData['serie'];
+        $materielRecupere->modele = $validatedData['model'];
         $materielRecupere->etat = $validatedData['etat'];
-        $materielRecupere->type = $validatedData['type'];
-        $materielRecupere->quantite = $validatedData['quantite'];
+        $materielRecupere->type_id = $validatedData['type'];
         $materielRecupere->description = $validatedData['description'];
         $materielRecupere->date_entre = $validatedData['date_entre'];
         $materielRecupere->update();
@@ -97,21 +90,6 @@ class MaterielRecupereShow extends Component
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
     }
-
-    public function deleteMaterielRecupere(int $materielRecupere_id)
-    {
-        $this->materielRecupere_id = $materielRecupere_id;
-    }
-
-    public function destroyMaterielRecupere()
-    {
-        MaterielRecupere::find($this->materielRecupere_id)->delete();
-        session()->flash('success', 'Materiel Recupere Deleted Successfull');
-        $this->resetInput();
-        $this->dispatchBrowserEvent('close-modal');
-    }
-
-
     public function closeModal()
     {
         $this->resetInput();
@@ -123,8 +101,6 @@ class MaterielRecupereShow extends Component
         $this->agence = '';
         $this->marque = '';
         $this->model = '';
-        $this->serie = '';
-        $this->quantite = '';
         $this->date_entre = '';
         $this->type = '';
         $this->description = '';
@@ -136,6 +112,7 @@ class MaterielRecupereShow extends Component
         $materielRecupere = MaterielRecupere::whereDate('date_entre', 'like', '%'.$this->mois.'%')->OrderBy('id','DESC')->paginate(10);
         $departements = Departement::OrderBy('nom','ASC')->get();
         $agences = Agence::OrderBy('nom','ASC')->get();
-        return view('livewire.materiel-recupere.materiel-recupere-show',compact('departements', 'agences','materielRecupere'));
+        $types = Type::all();
+        return view('livewire.materiel-recupere.materiel-recupere-show',compact('departements','types', 'agences','materielRecupere'));
     }
 }

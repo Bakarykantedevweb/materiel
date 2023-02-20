@@ -1,7 +1,7 @@
 <div>
     @include('livewire.bon-entre.bon-entre-modal')
     <section class="content">
-        <h2 class="ml-2">Bon de Livraisons</h2>
+        <h2 class="ml-2">Bon de Reception</h2>
         <div class="container">
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -12,13 +12,25 @@
                 </div>
             @endif
         </div>
-
+        <div class="container ml-1">
+            <div class="row">
+                <div class="container ml-1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Selectionnez le mois</label>
+                            <input type="month" wire:model="mois" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Bon de Livraisons</h3>
+                            <h3 class="card-title">Bon de reception</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#modal-default">

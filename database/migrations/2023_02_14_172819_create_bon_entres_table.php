@@ -15,7 +15,7 @@ class CreateBonEntresTable extends Migration
     {
         Schema::create('bon_entres', function (Blueprint $table) {
             $table->id();
-            $table->string('numero');
+            $table->string('numero')->nullable();
             $table->foreignId('fournisseur_id')->constrained();
             $table->text('description');
             $table->date('date_entre');

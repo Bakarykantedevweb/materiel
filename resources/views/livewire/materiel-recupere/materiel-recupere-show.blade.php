@@ -49,13 +49,10 @@
                                         <th class="text-center">Agence</th>
                                         <th class="text-center">Marque</th>
                                         <th class="text-center">Model</th>
-                                        <th class="text-center">Serie</th>
                                         <th class="text-center">Type</th>
                                         <th class="text-center">Etat</th>
-                                        <th class="text-center">Quantite</th>
                                         <th class="text-center">Date Entrer</th>
                                         <th class="text-center">Edit</th>
-                                        <th class="text-center">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,11 +63,9 @@
                                             <td class="text-center">{{ $materiel->departement->nom }}</td>
                                             <td class="text-center">{{ $materiel->agence->nom }}</td>
                                             <td class="text-center">{{ $materiel->marque }}</td>
-                                            <td class="text-center">{{ $materiel->model }}</td>
-                                            <td class="text-center">{{ $materiel->serie }}</td>
-                                            <td class="text-center">{{ $materiel->type }}</td>
+                                            <td class="text-center">{{ $materiel->modele }}</td>
+                                            <td class="text-center">{{ $materiel->type->libelle }}</td>
                                             <td class="text-center">{{ $materiel->etat }}</td>
-                                            <td class="text-center">{{ $materiel->quantite }}</td>
                                             <td class="text-center">{{ $materiel->date_entre }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary" data-toggle="modal"
@@ -79,10 +74,6 @@
                                                         class="fa fa-edit"></i>
                                                 </button>
                                             </td>
-                                            <td class="text-center"><button class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#deleteMaterielRecuperemodal"
-                                                    wire:click="deleteMaterielRecupere({{ $materiel->id }})"><i
-                                                        class="fa fa-trash"></i></button></td>
                                         </tr>
                                     @empty
                                         <tr>
