@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $materiels = Materiel::count();
         $agences = Agence::count();
         $fournisseurs = Fournisseur::count();
-        return view('admin.dashboard',compact('materiels','agences','fournisseurs'));
+        $materielRecupere = Fournisseur::count();
+        return view('admin.dashboard',compact('materiels','agences','fournisseurs','materielRecupere'));
     }
 }

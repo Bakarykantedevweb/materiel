@@ -54,7 +54,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>5</h3>
+                        <h3>{{ $materielRecupere }}</h3>
 
                         <p>Recuperation</p>
                     </div>
