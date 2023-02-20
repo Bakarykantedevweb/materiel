@@ -46,7 +46,9 @@
                                 <label for="">Departements</label>
                                 <select wire:model="departement" class="form-control">
                                     <option value=""></option>
-                                    <option value=""></option>
+                                    @foreach ($departements as $dep)
+                                        <option value="{{ $dep->id }}">{{ $dep->nom }}</option>
+                                    @endforeach
                                 </select>
                                 @error('departement')
                                     <span class="text-danger">{{ $message }}</span>
@@ -98,6 +100,95 @@
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
             </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+{{-- Detail Bon Livraison --}}
+<div class="modal fade" id="modal-xl">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail Bon Livraison</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h2 class="text-center">DECHARGE SUITE A LA RECEPTION</h2>
+                    <h2 class="text-center">DES OUTILS DE TRAVAIL DE LA BIM S.A.</h2>
+                    <b>Date:</b>
+                    <br><br>
+                    <p>Je, M.<b>Bakary Kante</b>, soussigné, reconnais que:</p>
+                    <ul>
+                        <li>Je dois utiliser les outils de travail qui m'ont été affectés, pour la réalisation des
+                            fonctions dont je serai en charge, exclusivement;</li>
+                        <br>
+                        <li>J'ai reçu les outils suivants en bon état, et m'engage à les préserver en bon état pendant
+                            l'exercice de mes fonctions</li>
+                        <br>
+                        <div class="container-fluid">
+                            <ul>
+                                <li>
+                                    Je dois utiliser les outils de travail qui m'ont ete affectés, pour la realisation
+                                    des
+                                    fonctions dont <br> je serai en charge, exclusivement;
+                                </li>
+                                <br>
+                                <li>
+                                    j'ai reçu l'outil suivant en bon etat, et m'engage à le preserver en bon état
+                                    pendant
+                                    l'exercice <br> de mes fonction
+                                </li>
+                                <br>
+                                <li class="ml-4">
+                                    HP Color laser jet pro MFP m183fw
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <br><br>
+                    <div class="ml-10">
+                        <b>Signature du collaborateur</b><br>
+                        <b class="ml-3">Lu et Apprové</b><br><br><br><br>
+                        M.Bakary Kante
+                    </div>
+                </div>
+                {{-- <h4 class="text-center">DECHARGE SUITE A LA RECEPTION</h4>
+                <h4 class="text-center">DES OUTILS DE TRAVAIL DE LA BIM S.A</h4>
+                <b>Date: </b>
+                <div class="mt-3">
+                    Je, M.Bakary Kante, soussigné, reconnais que:
+                    <div class="container mt-3">
+                        <ul>
+                            <li>
+                                Je dois utiliser les outils de travail qui m'ont ete affectés, pour la realisation des
+                                fonctions dont <br> je serai en charge, exclusivement;
+                            </li>
+                            <br>
+                            <li>
+                                j'ai reçu l'outil suivant en bon etat, et m'engage à le preserver en bon état pendant
+                                l'exercice <br> de mes fonction
+                            </li>
+                            <br>
+                            <li class="ml-4">
+                                HP Color laser jet pro MFP m183fw
+                            </li>
+                        </ul>
+                        <div class="float-end">
+                            <b>Signature de collaborateur <br> Lu et Approuve</b>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
         <!-- /.modal-content -->
     </div>

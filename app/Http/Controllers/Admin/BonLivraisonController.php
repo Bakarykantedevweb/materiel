@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\BonSorti;
 use App\Models\BonLivraison;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,7 +46,7 @@ class BonLivraisonController extends Controller
      * @param  \App\Models\BonLivraison  $bonLivraison
      * @return \Illuminate\Http\Response
      */
-    public function show(BonLivraison $bonLivraison)
+    public function show(BonSorti $bonLivraison)
     {
         //
     }
@@ -56,9 +57,14 @@ class BonLivraisonController extends Controller
      * @param  \App\Models\BonLivraison  $bonLivraison
      * @return \Illuminate\Http\Response
      */
-    public function edit(BonLivraison $bonLivraison)
+    public function print($id)
     {
-        //
+        $materielsorti = BonSorti::find($id);
+        if($materielsorti != "")
+        {
+            $detailBonMateriels = $materielsorti->materiels;
+        }
+        return view('admin.bon-livraison.print',compact('materielsorti','detailBonMateriels'));
     }
 
     /**
@@ -68,7 +74,7 @@ class BonLivraisonController extends Controller
      * @param  \App\Models\BonLivraison  $bonLivraison
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BonLivraison $bonLivraison)
+    public function update(Request $request, BonSorti $bonLivraison)
     {
         //
     }
@@ -79,7 +85,7 @@ class BonLivraisonController extends Controller
      * @param  \App\Models\BonLivraison  $bonLivraison
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BonLivraison $bonLivraison)
+    public function destroy()
     {
         //
     }

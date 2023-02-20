@@ -1,7 +1,7 @@
 <div>
     @include('livewire.bon-entre.bon-entre-modal')
     <section class="content">
-        <h2 class="ml-2">Bon Entres</h2>
+        <h2 class="ml-2">Bon de Livraisons</h2>
         <div class="container">
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Bon Entres</h3>
+                            <h3 class="card-title">Bon de Livraisons</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#modal-default">
@@ -32,12 +32,11 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th class="text-center">Numero</th>
                                         <th class="text-center">Fourisseur</th>
                                         <th class="text-center">Libelle</th>
                                         <th class="text-center">Date</th>
                                         <th class="text-center">Details</th>
-                                        <th class="text-center">Edit</th>
-                                        <th class="text-center">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +44,7 @@
                                     @forelse ($bonentres as $bonentre)
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
+                                            <td class="text-center">{{ $bonentre->numero }}</td>
                                             <td class="text-center">{{ $bonentre->fournisseur->nom }}</td>
                                             <td class="text-center">{{ $bonentre->description }}</td>
                                             <td class="text-center">{{ $bonentre->date_entre }}</td>
@@ -52,12 +52,6 @@
                                                 data-toggle="modal" data-target="#modal-xl"
                                                 wire:click="detailBon({{ $bonentre->id }})"
                                                  class="btn btn-info"><i class="fa fa-info"></i></button>
-                                            </td>
-                                             <td class="text-center"><button type="button"
-                                                 class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                                            </td>
-                                            <td class="text-center"><button type="button"
-                                                 class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @empty

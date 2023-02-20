@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBonEntresTable extends Migration
+class CreateBonEntreMaterielPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateBonEntresTable extends Migration
      */
     public function up()
     {
-        Schema::create('bon_entres', function (Blueprint $table) {
-            $table->id();
-            $table->string('numero');
-            $table->foreignId('fournisseur_id')->constrained();
-            $table->text('description');
-            $table->date('date_entre');
+         Schema::create('bon_entre_materiel', function (Blueprint $table) {
+            $table->foreignId('materiel_id')->constrained();
+            $table->foreignId('bon_entre_id')->constrained();
+            $table->integer('quantite');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBonEntresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bon_entres');
+        Schema::dropIfExists('bon_entre_materiel');
     }
 }

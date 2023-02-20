@@ -37,28 +37,23 @@
                                         <th class="text-center">Nom</th>
                                         <th class="text-center">Prenom</th>
                                         <th class="text-center">Date Sortie</th>
-                                        <th class="text-center">Edit</th>
-                                        <th class="text-center">Delete</th>
+                                        <th class="text-center">Detail</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
+                                <tbody>
                                     @php $x = 1; @endphp
-                                    @forelse ($bonentres as $bonentre)
+                                    @forelse ($bonSortis as $bonSorti)
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
-                                            <td class="text-center">{{ $bonentre->fournisseur->nom }}</td>
-                                            <td class="text-center">{{ $bonentre->description }}</td>
-                                            <td class="text-center">{{ $bonentre->date_entre }}</td>
-                                            <td class="text-center"><button type="button"
-                                                data-toggle="modal" data-target="#modal-xl"
-                                                wire:click="detailBon({{ $bonentre->id }})"
-                                                 class="btn btn-info"><i class="fa fa-info"></i></button>
-                                            </td>
-                                             <td class="text-center"><button type="button"
-                                                 class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                                            </td>
-                                            <td class="text-center"><button type="button"
-                                                 class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <td class="text-center">{{ $bonSorti->agence->nom }}</td>
+                                            <td class="text-center">{{ $bonSorti->departement->nom }}</td>
+                                            <td class="text-center">{{ $bonSorti->nom }}</td>
+                                            <td class="text-center">{{ $bonSorti->prenom }}</td>
+                                            <td class="text-center">{{ $bonSorti->date_sorti }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ url('bonLivraison/print/'.$bonSorti->id) }}" target="_blank" class="btn btn-info">
+                                                    <i class="fa fa-info"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @empty
@@ -66,7 +61,7 @@
                                             <td colspan="4" class="text-center">Pas d'Agence pour le moment</td>
                                         </tr>
                                     @endforelse
-                                </tbody> --}}
+                                </tbody>
                             </table>
                             <div class="py-2">
                                 {{-- {{ $agences->links() }} --}}

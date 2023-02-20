@@ -46,7 +46,7 @@ class MaterielShow extends Component
         $materiel->model = $validatedData['model'];
         $materiel->serie = $validatedData['serie'];
         $materiel->type_id = $validatedData['type'];
-        $materiel->etat = $validatedData['etat'];
+        $materiel->etat_id = $validatedData['etat'];
         $materiel->date_entre = $validatedData['date_entre'];
         $materiel->description = $validatedData['description'];
         $materiel->code = $validatedData['code'];

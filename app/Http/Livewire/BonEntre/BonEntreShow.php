@@ -68,7 +68,7 @@ class BonEntreShow extends Component
         {
             for($i = 0; $i < count($this->materiel_id); $i++)
             {
-                DB::table('materiels_bon_entres')->insert([
+                DB::table('bon_entre_materiel')->insert([
                     'materiel_id' => $this->materiel_id[$i],
                     'bon_entre_id' => $bon->id,
                     'quantite' => $this->quantite[$i]
@@ -89,7 +89,7 @@ class BonEntreShow extends Component
         }
     }
 
-     public function closeModal()
+    public function closeModal()
     {
         $this->resetInput();
     }
