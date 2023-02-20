@@ -18,6 +18,17 @@ class BonEntreController extends Controller
         return view('admin.bon-entre.index');
     }
 
+
+    public function print($id)
+    {
+        $bonDetail = BonEntre::find($id);
+        if($bonDetail != "")
+        {
+            $detailBonMateriels = $bonDetail->materiels;
+        }
+        return view('admin.bon-entre.print',compact('bonDetail','detailBonMateriels'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

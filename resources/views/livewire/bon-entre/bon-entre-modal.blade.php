@@ -144,7 +144,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Imprimer</button>
+                    <a href="{{ url('bonEntre/print/'.$bonDetail->id) }}" target="_blank"><button type="button" class="btn btn-primary">Imprimer</button></a>
                 </div>
             </div>
             <!-- /.modal-content -->

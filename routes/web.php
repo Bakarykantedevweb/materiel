@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/materiels',[MaterielController::class, 'index']);
     Route::get('/materiels-recuperes',[MaterielRecupereController::class, 'index']);
     Route::get('/bonEntre',[BonEntreController::class, 'index']);
+    Route::get('/bonEntre/print/{id}',[BonEntreController::class, 'print']);
     Route::get('/bonLivraison',[BonLivraisonController::class, 'index']);
     Route::get('/bonLivraison/print/{id}',[BonLivraisonController::class, 'print']);
     Route::get('/agences',[AgenceController::class, 'index']);
