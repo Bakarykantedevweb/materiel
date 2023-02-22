@@ -11,4 +11,6 @@ class DepartementController extends Controller
     {
         return view('admin.departement.index');
     }
+
+    
 }

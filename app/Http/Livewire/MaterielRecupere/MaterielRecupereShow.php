@@ -111,7 +111,7 @@ class MaterielRecupereShow extends Component
     {
         $materielRecupere = MaterielRecupere::whereDate('date_entre', 'like', '%'.$this->mois.'%')->OrderBy('id','DESC')->paginate(10);
         $departements = Departement::OrderBy('nom','ASC')->get();
-        $agences = Agence::OrderBy('nom','ASC')->get();
+        $agences = Agence::where('statut','1')->OrderBy('nom','ASC')->get();
         $types = Type::all();
         return view('livewire.materiel-recupere.materiel-recupere-show',compact('departements','types', 'agences','materielRecupere'));
     }

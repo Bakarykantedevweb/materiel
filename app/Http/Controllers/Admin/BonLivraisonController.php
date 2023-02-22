@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
+use App\Models\Agence;
 use App\Models\BonSorti;
 use App\Models\BonLivraison;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Departement;
 
 class BonLivraisonController extends Controller
 {
@@ -27,6 +30,25 @@ class BonLivraisonController extends Controller
     public function create()
     {
         //
+    }
+
+    public function statistique()
+    {
+        return view('admin.bon-livraison.statistique');
+    }
+
+    public function statistiqueAgence()
+    {
+        $agences = Agence::where('statut','1')->orderBy('nom', 'ASC')->get();
+        $types = Type::all();
+        return view('admin.bon-livraison.statistique-agences',compact('agences','types'));
+    }
+
+    public function statistiqueDep()
+    {
+        $departements = Departement::orderBy('nom', 'ASC')->get();
+        $types = Type::all();
+        return view('admin.bon-livraison.statistique-dep',compact('departements','types'));
     }
 
     /**

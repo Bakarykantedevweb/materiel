@@ -91,7 +91,7 @@ class BonLivraisonShow extends Component
 
     public function render()
     {
-        $this->agences = Agence::all();
+        $this->agences = Agence::where('statut','1')->get();
         $this->departements = Departement::all();
         $this->materiels = Materiel::all();
         $bonSortis = BonSorti::whereDate('date_sorti', 'like', '%'.$this->mois.'%')->get();

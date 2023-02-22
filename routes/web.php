@@ -38,6 +38,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bonEntre',[BonEntreController::class, 'index']);
     Route::get('/bonEntre/print/{id}',[BonEntreController::class, 'print']);
     Route::get('/bonLivraison',[BonLivraisonController::class, 'index']);
+    Route::get('/statistiques',[BonLivraisonController::class, 'statistique']);
+    Route::get('/statistiques-departements',[BonLivraisonController::class, 'statistiqueDep']);
+    Route::get('/statistiques-agences',[BonLivraisonController::class, 'statistiqueAgence']);
     Route::get('/bonLivraison/print/{id}',[BonLivraisonController::class, 'print']);
     Route::get('/agences',[AgenceController::class, 'index']);
     Route::get('/fournisseurs',[FournisseurController::class, 'index']);

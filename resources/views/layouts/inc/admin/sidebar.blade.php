@@ -30,17 +30,17 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/bonEntre') }}" class="nav-link">
-                        <i class="fa fa-door-open nav-icon"></i>
+                        <i class="fa fa-door-closed nav-icon"></i>
                         <p>Bon reception</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/bonLivraison') }}" class="nav-link">
-                        <i class="fa fa-door-closed nav-icon"></i>
+                        <i class="fa fa-door-open nav-icon"></i>
                         <p>Bon livraison</p>
                     </a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ url('/materiels-recuperes') }}" class="nav-link">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Materiels Recuperés</p>
@@ -62,6 +62,12 @@
                     <a href="{{ url('/departements') }}" class="nav-link">
                         <i class="fas fa-warehouse nav-icon"></i>
                         <p>Departements</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/statistiques') }}" class="nav-link">
+                        <i class="fas fa-chart-pie nav-icon"></i>
+                        <p>Statistiques</p>
                     </a>
                 </li>
                 <li class="nav-item">

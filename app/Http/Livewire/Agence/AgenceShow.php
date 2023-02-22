@@ -12,12 +12,13 @@ class AgenceShow extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $nom, $agence_id;
+    public $nom, $statut, $agence_id;
 
     protected function rules()
     {
         return [
             'nom' => 'required|string|',
+            'statut' => 'required',
         ];
     }
 
@@ -44,6 +45,7 @@ class AgenceShow extends Component
         {
             $this->agence_id = $agence_id;
             $this->nom = $agence->nom;
+            $this->statut = $agence->statut;
         }
         else
         {
@@ -56,6 +58,7 @@ class AgenceShow extends Component
         $validatedData = $this->validate();
         Agence::where('id',$this->agence_id)->update([
             'nom' => $validatedData['nom'],
+            'statut' => $validatedData['statut'],
         ]);
         session()->flash('success', 'Agence Updated Successfull');
         $this->resetInput();
@@ -69,7 +72,9 @@ class AgenceShow extends Component
 
     public function destroyAgence()
     {
-        Agence::find($this->agence_id)->delete();
+        Agence::find($this->agence_id)->update([
+            'statut' => '0'
+        ]);
         session()->flash('success', 'Agence Deleted Successfull');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
