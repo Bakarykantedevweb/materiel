@@ -1,8 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Agence')
+@section('title', 'Bon Livraison Statistique')
 @section('content')
     <!-- Main content -->
-   <livewire:agence.agence-show>
-
+    <livewire:statistique-agence.statistique-agence-show>
     <!-- /.content -->
 @endsection

@@ -8,9 +8,12 @@ use App\Http\Controllers\Admin\MaterielController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartementController;
 use App\Http\Controllers\Admin\FournisseurController;
+use App\Http\Controllers\Admin\StatistiqueController;
 use App\Http\Controllers\Admin\BonLivraisonController;
 use App\Http\Controllers\Admin\MaterielSortiController;
 use App\Http\Controllers\Admin\MaterielRecupereController;
+use App\Http\Controllers\Admin\StatistiqueAgenceController;
+use App\Http\Controllers\Admin\StatistiqueDepartementController;
 
 
 /*
@@ -38,9 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bonEntre',[BonEntreController::class, 'index']);
     Route::get('/bonEntre/print/{id}',[BonEntreController::class, 'print']);
     Route::get('/bonLivraison',[BonLivraisonController::class, 'index']);
-    Route::get('/statistiques',[BonLivraisonController::class, 'statistique']);
-    Route::get('/statistiques-departements',[BonLivraisonController::class, 'statistiqueDep']);
-    Route::get('/statistiques-agences',[BonLivraisonController::class, 'statistiqueAgence']);
+    Route::get('/statistiques',[StatistiqueController::class, 'index']);
+    Route::get('/statistiques-agences',[StatistiqueAgenceController::class, 'index']);
+    Route::get('/statistiques-departements',[StatistiqueDepartementController::class, 'index']);
     Route::get('/bonLivraison/print/{id}',[BonLivraisonController::class, 'print']);
     Route::get('/agences',[AgenceController::class, 'index']);
     Route::get('/fournisseurs',[FournisseurController::class, 'index']);
