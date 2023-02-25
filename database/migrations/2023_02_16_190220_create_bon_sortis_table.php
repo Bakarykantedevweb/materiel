@@ -16,7 +16,8 @@ class CreateBonSortisTable extends Migration
         Schema::create('bon_sortis', function (Blueprint $table) {
             $table->id();
             $table->foreignId("agence_id")->constrained();
-            $table->foreignId("departement_id")->constrained();
+            $table->foreignId("departement_id")->constrained()->nullable();
+            $table->foreignId("fonction_id")->constrained()->nullable();
             $table->date("date_sorti");
             $table->string('nom');
             $table->string('prenom');

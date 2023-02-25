@@ -1,4 +1,5 @@
 <div>
+     @include('livewire.statistique-departement.statistique-departement-modal')
     <section class="content">
         <h2 class="ml-2">Statistiques des Materiels par Departement</h2>
         <div class="container">
@@ -22,21 +23,23 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                {{-- @php
+                                @php
                                     $nbr = 0;
                                 @endphp
-                                 @foreach ($agence->bon_sortis as $bon)
+                                 @foreach ($departement->bon_sortis as $bon)
                                       @php
                                           foreach($bon->materiels  as $materiel)
                                           {
-                                          $nbr += DB::table('bon_sorti_materiel')->where('materiel_id',$materiel->id)
-                                                                                 ->where("bon_sorti_id",$bon->id)->sum("quantite");
+                                          $nbr += count(DB::table('bon_sorti_materiel')->where('materiel_id',$materiel->id)
+                                                                                 ->where("bon_sorti_id",$bon->id)->get());
                                           }
                                       @endphp
-                                @endforeach --}}
-                                <p>Nombre de Materiels :</p>
-                                <button class="btn btn-primary"><i class="fa fa-info"></i></button>
-                                <button class="btn btn-info"><i class="fa fa-print"></i></button>
+                                @endforeach
+                                <h4>Nombre de Materiels : {{ $nbr }}</h4>
+                                 <button type="button" wire:click="detailSatistiqueDepartement({{ $departement->id }})" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modal-lg">
+                                    <i class="fa fa-info"></i>
+                                </button>
                             </div>
                             <!-- /.card-body -->
                         </div>

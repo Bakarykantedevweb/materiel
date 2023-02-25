@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BonSorti;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Departement extends Model
 {
@@ -12,4 +13,9 @@ class Departement extends Model
     protected $table = 'departements';
 
     protected $fillable = ['nom'];
+
+    public function bon_sortis()
+    {
+        return $this->hasMany(BonSorti::class);
+    }
 }

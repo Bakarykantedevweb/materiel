@@ -1,5 +1,5 @@
 <div>
-    @include('admin.bon-livraison.statistique-agence-modal')
+    @include('livewire.statistique-agence.statistique-agence-modal')
     <section class="content">
         <h2 class="ml-2">Statistiques des Materiels par Agence</h2>
         <div class="container">
@@ -38,12 +38,11 @@
                                         }
                                     @endphp
                                 @endforeach
-                                <p>Nombre de Materiels : {{ $nbr }}</p>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <h4>Nombres de Materiels : {{ $nbr }}</h4>
+                                <button type="button" wire:click="detailSatistiqueAgence({{ $agence->id }})" class="btn btn-primary" data-toggle="modal"
                                     data-target="#modal-lg">
                                     <i class="fa fa-info"></i>
                                 </button>
-                                <button class="btn btn-info"><i class="fa fa-print"></i></button>
                             </div>
                             <!-- /.card-body -->
                         </div>

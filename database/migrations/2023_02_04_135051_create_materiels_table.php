@@ -21,6 +21,7 @@ class CreateMaterielsTable extends Migration
             $table->boolean('etat_id');
             $table->text('description');
             $table->string('code');
+            $table->integer('statut');
             $table->foreignId('type_id')->constrained();
             $table->date('date_entre');
             $table->timestamps();

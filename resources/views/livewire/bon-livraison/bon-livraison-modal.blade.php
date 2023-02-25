@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Agences</label>
-                                <select wire:model="agence" class="form-control" style="width: 100%;">
+                                <select wire:model="agence"  class="form-control" style="width: 100%;">
                                     <option value=""></option>
                                     @foreach ($agences as $agence)
                                         <option value="{{ $agence->id }}">{{ $agence->nom }}</option>
@@ -66,7 +66,7 @@
                             @if (is_array($champs))
                                 @foreach ($champs as $champ)
                                     <div class="row mb-3">
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <select class="form-control" wire:model="materiel_id.{{ $loop->index }}">
                                                 <option value="">Choisir Materiel</option>
                                                 @foreach ($materiels as $materiel)
@@ -78,16 +78,12 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <input type="number" wire:model="quantite.{{ $loop->index }}"
                                                 placeholder="Quantite" class="form-control">
                                             @error('quantite')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div>
-                                        <div class="col-md-2 py-1">
-                                            <button type="button" wire:click="deleteInput({{ $champ }})"
-                                                class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 @endforeach
@@ -105,4 +101,4 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
->
+

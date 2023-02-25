@@ -14,7 +14,8 @@ class BonLivraisonShow extends Component
 {
     public $agences, $champs, $key, $materiel_id, $quantite, $departements, $nom, $prenom, $agence, $departement, $date_sorti, $materiels,
             $bonsorti_id, $mois;
-
+      public $test = false;
+    
     public function addInput()
     {
         $this->key++;
@@ -53,11 +54,16 @@ class BonLivraisonShow extends Component
         {
             for($i = 0; $i < count($this->materiel_id); $i++)
             {
-                DB::table('bon_sorti_materiel')->insert([
-                    'materiel_id' => $this->materiel_id[$i],
-                    'bon_sorti_id' => $bonLivraison->id,
-                    'quantite' => $this->quantite[$i]
-                ]);
+
+                    DB::table('bon_sorti_materiel')->insert([
+                        'materiel_id' => $this->materiel_id[$i],
+                        'bon_sorti_id' => $bonLivraison->id,
+                        'quantite' => $this->quantite[$i]
+                    ]);
+
+                   Materiel::where('id',$this->materiel_id[$i])->update([
+                        'statut' => 1
+                   ]);
             }
 
  
@@ -93,7 +99,7 @@ class BonLivraisonShow extends Component
     {
         $this->agences = Agence::where('statut','1')->get();
         $this->departements = Departement::all();
-        $this->materiels = Materiel::all();
+        $this->materiels = Materiel::Where('statut','0')->orderBy('id','DESC')->get();;
         $bonSortis = BonSorti::whereDate('date_sorti', 'like', '%'.$this->mois.'%')->get();
         return view('livewire.bon-livraison.bon-livraison-show',compact('bonSortis'));
     }

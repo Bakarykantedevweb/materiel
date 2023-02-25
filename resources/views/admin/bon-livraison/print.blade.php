@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <br>
     <div class="container mt-3">
         <h2 class="text-center">DECHARGE SUITE A LA RECEPTION</h2>
         <h2 class="text-center">DES OUTILS DE TRAVAIL DE LA BIM S.A.</h2>

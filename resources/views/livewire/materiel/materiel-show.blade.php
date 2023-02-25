@@ -38,6 +38,7 @@
                                         <th class="text-center">Serie</th>
                                         <th class="text-center">Type</th>
                                         <th class="text-center">Date Entrer</th>
+                                        <th class="text-center">Statut</th>
                                         <th class="text-center">Edit</th>
                                     </tr>
                                 </thead>
@@ -52,6 +53,13 @@
                                             <td class="text-center">{{ $materiel->serie }}</td>
                                             <td class="text-center">{{ $materiel->type->libelle }}</td>
                                             <td class="text-center">{{ $materiel->date_entre }}</td>
+                                            <td class="text-center">
+                                                @if ($materiel->statut == 1)
+                                                    <span class="btn btn-success">Livrer</span>
+                                                @else
+                                                    <span class="btn btn-danger">Non Livrer</span>
+                                                @endif
+                                            </td>
                                             <td class="text-center"><button class="btn btn-primary" data-toggle="modal"
                                                     data-target="#editMaterielmodal"
                                                     wire:click="editMateriel({{ $materiel->id }})"><i

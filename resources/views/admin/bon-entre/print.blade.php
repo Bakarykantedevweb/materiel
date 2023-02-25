@@ -12,7 +12,7 @@
 <body>
     <br>
     <div class="container mt-3">
-        <h2 class="text-center">Bordereau de reception</h2>
+        <h2 class="text-center">Bordereau de réception</h2>
         <div class="row p-1">
             <div class="col-xl-6">
                 <div class="col-md-11 border border-2 rounded p-2">
