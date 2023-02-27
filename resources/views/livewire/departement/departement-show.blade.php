@@ -33,6 +33,7 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th class="text-center">Nom</th>
+                                        <th class="text-center">Statut</th>
                                         <th class="text-center">Edit</th>
                                         <th class="text-center">Delete</th>
                                     </tr>
@@ -43,6 +44,13 @@
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
                                             <td class="text-center">{{ $departement->nom }}</td>
+                                            <td class="text-center">
+                                                @if ($departement->statut == '1')
+                                                    <span class="btn btn-success">Non Fermer</span>
+                                                @else
+                                                    <span class="btn btn-danger">Fermer</span>
+                                                @endif
+                                            </td>
                                             <td class="text-center"><button type="button"
                                                     wire:click="editDepartement({{ $departement->id }})"
                                                     class="btn btn-primary" data-toggle="modal"

@@ -14,7 +14,7 @@ class MaterielShow extends Component
     protected $paginationTheme = 'bootstrap';
 
 
-    public  $marque, $model, $etat, $serie, $date_entre, $description, $type, $code, $materiel_id;
+    public  $marque, $statut, $model, $etat, $serie, $date_entre, $description, $type, $code, $materiel_id;
 
     public $datemois = '';
     public $dateannee = '';
@@ -70,6 +70,7 @@ class MaterielShow extends Component
             $this->code = $materiel->code;
             $this->date_entre = $materiel->date_entre;
             $this->etat = $materiel->etat_id;
+            $this->statut = $materiel->statut;
             $this->description = $materiel->description;
         }
         else
@@ -87,6 +88,7 @@ class MaterielShow extends Component
         $materiel->serie = $validatedData['serie'];
         $materiel->type_id = $validatedData['type'];
         $materiel->etat_id = $validatedData['etat'];
+        $materiel->statut = $this->statut ;
         $materiel->date_entre = $validatedData['date_entre'];
         $materiel->description = $validatedData['description'];
         $materiel->code = $validatedData['code'];

@@ -186,6 +186,19 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label for="">Statut</label>
+                                <select wire:model="statut" class="form-control">
+                                    <option value=""></option>
+                                    <option value="0">Non Livrer</option>
+                                    <option value="1">Livrer</option>
+                                </select>
+                                @error('etat')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="">Description</label>
                                 <textarea wire:model="description" class="form-control" cols="30" rows="2"></textarea>
                                 @error('description')

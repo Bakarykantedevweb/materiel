@@ -7,12 +7,13 @@ use App\Models\Departement;
 
 class DepartementShow extends Component
 {
-    public $nom, $departement_id;
+    public $statut, $nom, $departement_id;
 
     protected function rules()
     {
         return [
             'nom' => 'required|string|',
+            'statut' => 'required',
         ];
     }
 
@@ -39,6 +40,7 @@ class DepartementShow extends Component
         {
             $this->departement_id = $departement_id;
             $this->nom = $departement->nom;
+            $this->statut = $departement->statut;
         }
         else
         {
@@ -51,6 +53,7 @@ class DepartementShow extends Component
         $validatedData = $this->validate();
         Departement::where('id',$this->departement_id)->update([
             'nom' => $validatedData['nom'],
+            'statut' => $validatedData['statut'],
         ]);
         session()->flash('success', 'Departement Updated Successfull');
         $this->resetInput();
@@ -64,7 +67,9 @@ class DepartementShow extends Component
 
     public function destroyDepartement()
     {
-        Departement::find($this->departement_id)->delete();
+        Departement::find($this->departement_id)->update([
+            'statut' => 0
+        ]);
         session()->flash('success', 'Departement Deleted Successfull');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');

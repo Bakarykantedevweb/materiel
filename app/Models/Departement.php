@@ -12,7 +12,7 @@ class Departement extends Model
 
     protected $table = 'departements';
 
-    protected $fillable = ['nom'];
+    protected $fillable = ['nom','statut'];
 
     public function bon_sortis()
     {

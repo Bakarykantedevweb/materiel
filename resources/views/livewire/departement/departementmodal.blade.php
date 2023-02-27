@@ -17,6 +17,17 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="">Statut</label>
+                        <select wire:model="statut" class="form-control">
+                            <option value=""></option>
+                            <option value="0">Fermer</option>
+                            <option value="1">Non Fermer</option>
+                        </select>
+                         @error('statut')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click="closeModal" class="btn btn-default" data-dismiss="modal">Fermer</button>
@@ -47,6 +58,17 @@
                         <label for="">Nom Departement</label>
                         <input type="text" wire:model="nom" class="form-control">
                         @error('nom')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Statut</label>
+                        <select wire:model="statut" class="form-control">
+                            <option value=""></option>
+                            <option value="0">Fermer</option>
+                            <option value="1">Non Fermer</option>
+                        </select>
+                         @error('statut')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

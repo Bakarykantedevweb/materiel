@@ -24,7 +24,7 @@ class StatistiqueDepartementShow extends Component
     }
     public function render()
     {
-        $departements = Departement::orderBy('nom', 'ASC')->get();
+        $departements = Departement::where('statut','1')->orderBy('nom', 'ASC')->get();
         return view('livewire.statistique-departement.statistique-departement-show',compact('departements'));
     }
 }

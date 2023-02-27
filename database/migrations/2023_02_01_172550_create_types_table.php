@@ -35,6 +35,9 @@ class CreateTypesTable extends Migration
             [
                 'libelle' =>  'Scanner',
             ],
+            [
+                'libelle' =>  'Autres',
+            ],
         ]
     );
     }
